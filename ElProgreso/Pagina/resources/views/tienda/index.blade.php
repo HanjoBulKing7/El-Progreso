@@ -68,7 +68,7 @@
                 ],
             processing: true,
             serverSide: true,
-            ajax: '{!! route('tienda.data') !!}',
+            ajax: "{!! route('tienda.data ') !!}",
             columns: [
                 { data: 'nombre_tienda', name: 'nombre_tienda' },
                 { data: 'responsable_tienda', name: 'responsable_tienda' },

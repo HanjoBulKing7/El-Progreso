@@ -15,6 +15,9 @@ class UsuarioController extends Controller
     public function __construct()
     {
         $this->middleware('tiporol');
+        $roles = DB::table('rol_usuarios')->get();
+        return view('usuarios.index', compact('roles'));
+
     }
 
     /**

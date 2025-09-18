@@ -72,7 +72,7 @@
                 ],
             processing: true,
             serverSide: true,
-            ajax: '{!! route('appvista.data') !!}',
+            ajax: "{!! route('appvista.data') !!}",
             columns: [
                 { data: 'nombre_ruta'},
                 { data: 'nombre_tienda'},
@@ -143,7 +143,7 @@
                 ],
             processing: true,
             serverSide: true,
-            ajax: '{!! route('apppedidos.data') !!}',
+            ajax: "{!! route('apppedidos.data') !!}",
             columns: [
                 { data: 'nombre_ruta'},
                 { data: 'nombre'},

@@ -14,6 +14,7 @@
 // use Symfony\Component\Routing\Route;
 use App\Http\Controllers\appRutaVistaController;
 use App\Http\Controllers\GastosController;
+use App\Http\Controllers\LicenciaController; // AÑADIR ESTA IMPORTACIÓN
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\RutaController;
 use App\Http\Controllers\TiendaController;
@@ -61,8 +62,8 @@ Route::get('/pdfchecklist', [VehiculoController::class, 'reporteCheckList'])->mi
 // resource para tipo de productos.
 Route::resource('/t_productos', '\App\Http\Controllers\TipoProdController')->middleware('auth','tiporol');
 
-// resource para licencia
-Route::resource('/licencias', 'LicenciaController')->only([
+// resource para licencia - CORREGIDO
+Route::resource('/licencias', LicenciaController::class)->only([
     'store'
 ]);
 
@@ -118,7 +119,7 @@ Route::get('/appvista-data', [appRutaVistaController::class, 'AppRutaVistaData']
 Route::get('/apppedidos-data', [appRutaVistaController::class, 'AppPedidos'])->name('apppedidos.data')->middleware('auth','tiporol');
 
 
-// route para imagenes
+// route para imagenes - CORREGIDO (punto y coma duplicado)
 Route::get('/img/{filename}', function ($filename) {
     $path = 'images/'.$filename; // Asume que estás usando el disco 'local'
 
@@ -130,11 +131,10 @@ Route::get('/img/{filename}', function ($filename) {
     $type = Storage::mimeType($path);
 
     return response()->make($file, 200)->header("Content-Type", $type);
-});;
+});
 
 Route::middleware(['auth', 'tiporol'])->group(function () {
     require __DIR__ . '/Rutas/ruta.php';
     require __DIR__ . '/Finanzas/Nomina/nomina.php';
     require __DIR__ . '/Finanzas/Nomina/bono_anuales.php';
 });
-
